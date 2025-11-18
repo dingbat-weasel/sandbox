@@ -65,7 +65,27 @@
   (+ (* n1 n1) (* n2 n2)))
 
 
-(max2-sum-of-squares 1 2 3)
+(max2-sum-of-squares 22 87 356)
+
+; operators as compound expressions
+(define (a-plus-abs-b a b)
+  ((if (> b 0) + -) a b))
+
+; applicative-order vs normal-order eval test
+(define (p) (p))
+(define (test x y)
+  (if (= x 0)
+      0
+      y))
+
+(test 0 (p))
 
 
 
+
+
+
+
+
+
+ 
