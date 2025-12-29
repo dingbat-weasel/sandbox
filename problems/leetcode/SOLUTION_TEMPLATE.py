@@ -9,9 +9,6 @@ Description:
 Approach:
 [Explain your approach - what pattern/technique did you use?]
 
-Time Complexity: O(?)
-Space Complexity: O(?)
-
 Notes:
 - [Any insights, edge cases, or gotchas]
 - [Alternative approaches considered]
@@ -19,11 +16,8 @@ Notes:
 
 def solution_name(param):
     """
-    Args:
-        param: description
-
-    Returns:
-        description
+    Time Complexity: O(?)
+    Space Complexity: O(?)
     """
     # Your solution here
     pass

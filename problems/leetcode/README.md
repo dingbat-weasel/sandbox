@@ -1,12 +1,19 @@
 # LeetCode Progress Tracker
 
-Following the [NeetCode Roadmap](https://neetcode.io/roadmap) for structured interview preparation.
+Following the **[NeetCode 150](https://neetcode.io/roadmap)** for structured interview preparation.
 
 ## Overview
 
+**Curriculum:** NeetCode 150 (pattern-based learning with video explanations)
 **Target:** 150-200 problems over 6 months
 **Language:** Python
 **Focus:** Pattern recognition and interview readiness
+
+**Why NeetCode 150?**
+- Organized by problem-solving patterns (not just data structures)
+- Video explanations for every problem
+- Progressive difficulty within each topic
+- Teaches you to recognize interview patterns explicitly
 
 ## Progress Summary
 
@@ -71,6 +78,20 @@ Following the [NeetCode Roadmap](https://neetcode.io/roadmap) for structured int
 - [ ] Timed practice (mediums in 45min)
 
 **Target:** 150-200 problems total
+
+## Weekly Workflow
+
+**For each topic:**
+1. **Learn** - Watch NeetCode's topic introduction video
+2. **Solve** - Work through problems in order (use video explanations when stuck)
+3. **Document** - Write solution with pattern notes and complexity analysis
+4. **Reflect** - What's the common pattern? When do you use this technique?
+5. **Optional** - Weekend: visualize the concept or find a niche use case
+
+**Resources:**
+- [NeetCode.io](https://neetcode.io) - Videos and problem list
+- [LeetCode.com](https://leetcode.com) - Where you solve the problems
+- This repo - Track progress and document solutions
 
 ## Problem Log
 
