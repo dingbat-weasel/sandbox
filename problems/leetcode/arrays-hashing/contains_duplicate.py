@@ -64,6 +64,19 @@ def has_duplicate2(nums: list[int]) -> bool:
     return False
 
 
+
+# also O(n) but more concise
+# hashes dont contain duplicates, so if duplicates exist
+# hash will be shorter length
+
+def has_duplicate3(nums: list[int]) -> bool:
+    """
+    Time Complexity: O(n)
+    Space Complexity: O(n)
+    """
+    return bool(len(set(nums)) < len(nums))
+
+
 # Test cases
 if __name__ == "__main__":
     # Example test cases
