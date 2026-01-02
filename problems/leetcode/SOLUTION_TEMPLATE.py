@@ -7,7 +7,7 @@ Description:
 [Brief problem description]
 
 Approach:
-[Explain your approach - what pattern/technique did you use?]
+[Explain the approach - what pattern/technique was used?]
 
 Notes:
 - [Any insights, edge cases, or gotchas]
@@ -19,7 +19,7 @@ def solution_name(param):
     Time Complexity: O(?)
     Space Complexity: O(?)
     """
-    # Your solution here
+    # solution here
     pass
 
 

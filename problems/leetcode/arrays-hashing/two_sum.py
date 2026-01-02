@@ -40,17 +40,23 @@ Constraints:
 
 
 Approach:
-[Explain the approach - what pattern/technique was used?]
+- create a hash map using dict()
+- for each input, use enumerate to grab the index and value
+- only need to check for presence of (difference of target and value) in hash map
 
+- if complement is present, return the pair of indexes
+- as the hash begins empty, if for val a in input a + a = target:
+- it doesn't identify itself as its own complement because it isn't added to the hash yet.
+
+- requires checking second solution in input to find pair, hash only contains all values before val
 Notes:
-- [Any insights, edge cases, or gotchas]
-- [Alternative approaches considered]
+- instinct is to brute force, or to make two passes over a hash but most optimal is single pass trick 
 """
 
-def two_sum(input: list[int], target: int) -> list[int]:
+def two_sum1(input: list[int], target: int) -> list[int]:
     """
-    Time Complexity: O(?)
-    Space Complexity: O(?)
+    Time Complexity: O(n)
+    Space Complexity: O(n)
     """
     seen = dict()
     for i, val in enumerate(input):
@@ -74,6 +80,6 @@ if __name__ == "__main__":
   ]
 
     for i, ((input, target), expected) in enumerate(test_cases):
-        result = two_sum(input, target)
+        result = two_sum1(input, target)
         status = "✓" if result == expected else "✗"
         print(f"Test {i+1}: {status} | Input: {input, target} | Expected: {expected} | Got: {result}")
