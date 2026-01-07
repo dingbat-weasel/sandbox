@@ -41,20 +41,44 @@ Notes:
 - [Alternative approaches considered]
 """
 
-def group_anagrams1(param):
+def group_anagrams1(input: list[str]):
     """
     Time Complexity: O(?)
     Space Complexity: O(?)
     """
-    # solution here
-    pass
+    anagrams: dict[int, dict[str, int]] = dict()
+    bucket = 0
+    out: list[list[str]] = []
+
+    for i, s in enumerate(input):
+        # {l1: n, l2:n, l3:n}
+        s_hash: dict[str, int] = dict()
+        group = []
+        for l in s:
+            s_hash[l] = s_hash.get(l, 0) + 1
+
+        
+        if anagrams[bucket] == s_hash:
+            group.append(s)
+            out[bucket] = group
+        # elif anagrams[bucket] != s_hash:    
+        #     anagrams[bucket] = anagrams.get(i, s_hash)
+
+
+    print(s_hash, anagrams, out)
+
+
+
+    
 
 
 # Test cases
 if __name__ == "__main__":
     # Example test cases
     test_cases = [
-        # (input, expected_output),
+       (["act","pots","tops","cat","stop","hat"], [["hat"],["act", "cat"],["stop", "pots", "tops"]]),
+       (["x"], [["x"]]),
+       ([""], [[""]]),
     ]
 
     for i, (input_data, expected) in enumerate(test_cases):
