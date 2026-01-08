@@ -26,9 +26,12 @@ class HashTable:
         # initialize an empty list at the address
         if bucket == None:
             bucket = []
+            self.data_map[index] = bucket
 
         # set key, value
         bucket.append([key, value])
+        check = self.data_map[index]
+        print(bucket, check)
 
 
     def get_item(self, key):
@@ -84,6 +87,7 @@ my_hash_table.set_item('abc', 123)
 my_hash_table.set_item('washers', 1200)
 my_hash_table.set_item('bolts', 50)
 my_hash_table.set_item('books', 35)
+
 
 print(my_hash_table.get_item('washers'))
 print(my_hash_table.get_item('books'))
