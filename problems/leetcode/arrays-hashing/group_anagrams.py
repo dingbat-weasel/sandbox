@@ -63,11 +63,45 @@ def group_anagrams1(input: list[str]):
             out[bucket] = group
         # elif anagrams[bucket] != s_hash:    
         #     anagrams[bucket] = anagrams.get(i, s_hash)
-
-
     print(s_hash, anagrams, out)
 
 
+def group_anagrams2(input: list[str]):
+    out = {}
+
+    for s in input:
+        # create array of len 26, index = letter, value = count
+        count = [0] * 26
+        for c in s:
+            # ord('a') begins at 97
+            count[ord(c) - ord('a')] +=1
+
+        # convert to tuple (lists cant be dict keys)
+        key = tuple(count)
+
+        # check if key exists before accessing
+        if key not in out:
+            out[key] = []
+
+        out[key].append(s)
+
+    return list(out.values())
+
+
+# generic pattern for grouping
+def compute_key(item):
+    key = item + 'key'
+    return key
+
+def group_generic (items):
+    groups = {}
+    for item in items:
+        key = compute_key(item)
+
+        if key not in groups:
+            groups[key] = []
+        
+        groups[key].append(item)
 
     
 
@@ -82,6 +116,6 @@ if __name__ == "__main__":
     ]
 
     for i, (input_data, expected) in enumerate(test_cases):
-        result = group_anagrams1(input_data)
+        result = group_anagrams2(input_data)
         status = "✓" if result == expected else "✗"
         print(f"Test {i+1}: {status} | Input: {input_data} | Expected: {expected} | Got: {result}")
