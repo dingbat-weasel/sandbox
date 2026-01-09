@@ -43,8 +43,11 @@ Notes:
 
 def group_anagrams1(input: list[str]):
     """
-    Time Complexity: O(?)
-    Space Complexity: O(?)
+    Time Complexity: O(m * n)
+    Space Complexity: O(m), O(m*n) for output list
+
+    m: numb of strings
+    n: length of longest string
     """
     anagrams: dict[int, dict[str, int]] = dict()
     bucket = 0
