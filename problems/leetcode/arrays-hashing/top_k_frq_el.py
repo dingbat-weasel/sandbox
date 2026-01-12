@@ -40,20 +40,42 @@ Notes:
 - [Alternative approaches considered]
 """
 
-def top_k_frq_el(nums:list[int], k: int):
+def top_k_frq_el(nums:list[int], k: int) -> list[int]:
     """
     Time Complexity: O(?)
     Space Complexity: O(?)
     """
     freq = {}
 
-    for n in nums:
+    for n in nums: 
         freq[n] = freq.get(n, 0) + 1
     sorted_freq = dict(sorted(freq.items(), key=lambda item: item[1], reverse=True))
     keys = list(sorted_freq)[:k]
 
     return keys
     
+def top_k_frq_el2(nums: list[int], k: int) -> list[int]:
+    """
+    Time Complexity: O(n)
+    Space Complexity: O(n)
+    """
+    count = {}
+    freq = [[] for i in range(len(nums) + 1)]    
+
+    for n in nums:
+        count[n] = 1 + count.get(n, 0)
+    
+    for n, c in count.items():
+        freq[c].append(n)
+    
+    res = []
+    for i in range(len(freq) - 1, 0, -1):
+        for n in freq[i]:
+            res.append(n)
+            if len(res) == k:
+                return res
+    return res
+
 
 
 
@@ -63,6 +85,9 @@ if __name__ == "__main__":
     test_cases = [
         (([4,5,5,6,6,6], 2), ([5,6], [6, 5])),
         (([7, 7], 1), ([7])),
+        (([4, 4, 5, 5, 5, 6, 7, 7, 9, 9], 4), ([5, 7, 9, 4], [4, 5, 7, 9], [5, 4, 7, 9])),
+        (([22, 24, 24, 67, 67, 89, 89, 89], 3), ([89, 67, 24], [24,  67, 89], [89, 24, 67])),
+    
     ]
 
     for i, ((nums, k), expected) in enumerate(test_cases):
