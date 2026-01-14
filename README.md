@@ -26,6 +26,7 @@ A structured repository for exploring computer science fundamentals, data struct
 **Goal:** Build strong DS/Algorithms foundations for software engineering interviews and deeper understanding.
 
 **Timeline:** 6-month intensive study focusing on:
+
 - Core data structures and algorithms
 - LeetCode pattern recognition and problem-solving
 - Interview preparation and whiteboarding skills
@@ -33,6 +34,7 @@ A structured repository for exploring computer science fundamentals, data struct
 **Primary Language:** Python (for speed and interview relevance)
 
 **Learning Approach:**
+
 - Topic-based organization (not source-based)
 - Clean, refactored implementations
 - Focus on understanding patterns and tradeoffs
@@ -45,16 +47,8 @@ See [problems/leetcode/README.md](problems/leetcode/README.md) for detailed Leet
 ## Learning Resources
 
 - **NeetCode Roadmap** - Primary interview prep structure
-- **MIT 6.006** - Conceptual foundations (deferred)
-- **Skiena's Algorithm Design Manual** - Future deep dive
-
-## Philosophy
-
-This repository balances:
-- **Interview pragmatism** - Solving problems efficiently for job readiness
-- **Conceptual depth** - Understanding the "why" behind patterns and tradeoffs
-- **Creative exploration** - Finding unexpected applications to maintain motivation
+- **Skiena's Algorithm Design Manual** - In conjunction and as reference
 
 ---
 
-*Last updated: 2025-12-28*
+_Last updated: 2025-12-28_
