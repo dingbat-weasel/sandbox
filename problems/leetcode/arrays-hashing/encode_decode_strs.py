@@ -65,11 +65,16 @@ Constraints:
 Follow up: Could you write a generalized algorithm to work on any possible set of characters?
 
 Approach:
-[Explain the approach - what pattern/technique was used?]
+
+Any single char delimiter can appear in the encoded str. 
+Can use length tracking int + delim character to get around this.
+Use two pointers to get length, check for delim, and count characters of length, move to next string.
 
 Notes:
-- [Any insights, edge cases, or gotchas]
-- [Alternative approaches considered]
+- Is an exciting principle, actually very simple but obviously applicable.
+- Maybe explore further with small encryption alg
+- What other infra is needed to put into practice?
+- How do other encoding mechnisms work; python encoder, json?
 """
 
 def encode_decode_strs1(strs: list[str]):
@@ -94,39 +99,39 @@ def encode_decode_strs1(strs: list[str]):
 
 def encode_decode_strs2(strs: list[str]):
     """
-    Time Complexity: O(?)
-    Space Complexity: O(?)
+    Time Complexity:
+        - encode: O(m)
+        - decode: 0(m)
+    Space Complexity:
+        - encode: O(m + n)
+        - decode: O(m + n)
+    where m = sum of lengths of all strings, n = number of strings
     """
     def encoder(strs: list[str]) -> str:
         encoded_str = ""
         for s in strs:
             delim = str(len(s)) + '#'
             encoded_str += delim + s
-            
-
-        print(encoded_str)
 
         return encoded_str
     
-    network_state = encoder(strs)
+    
 
     def decoder(str: str) -> list[str]:
+        # '3#rat'
         decoded_str, i = [], 0
 
         while i < len(str):
             j = i
-            while [j] != '#':
+            while str[j] != '#':
                 j += 1
-            length = int(str[i:j])
+            length = int(str[i : j])
             decoded_str.append(str[j + 1 : j + 1 + length])
             i = j + 1 + length
         return decoded_str
-    
-    # debug this next time
-            
 
-    message = decoder(network_state)
-    return message
+
+    return decoder(encoder(strs))
 
 # Test cases
 if __name__ == "__main__":

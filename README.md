@@ -1,14 +1,14 @@
 # Learning Sandbox
 
-A structured repository for exploring computer science fundamentals, data structures, algorithms, and mathematical concepts through implementation and creative application.
+A structured repository for exploring computer science fundamentals, data structures, algorithms, and mathematical concepts through implementation and creative application. Created as a strategy for deeper, more playful learning during my studies and practice of different concepts.
 
 ## Repository Structure
 
 ```
 ├── core/                           # Reference implementations & deep dives
-│   ├── data-structures/           # Clean implementations with analysis
-│   ├── algorithms/                # Core algorithmic techniques
-│   └── mathematics/               # Mathematical foundations
+│   ├── data-structures/           # Implementations with analysis
+│   ├── algorithms/                # Core algorithms
+│   └── mathematics/               # Mathematical foundations, exploration
 │
 ├── problems/                      # Problem-solving practice
 │   ├── leetcode/                 # LeetCode problems organized by topic
@@ -25,30 +25,10 @@ A structured repository for exploring computer science fundamentals, data struct
 
 **Goal:** Build strong DS/Algorithms foundations for software engineering interviews and deeper understanding.
 
-**Timeline:** 6-month intensive study focusing on:
-
-- Core data structures and algorithms
-- LeetCode pattern recognition and problem-solving
-- Interview preparation and whiteboarding skills
-
-**Primary Language:** Python (for speed and interview relevance)
-
-**Learning Approach:**
-
-- Topic-based organization (not source-based)
-- Clean, refactored implementations
-- Focus on understanding patterns and tradeoffs
-- Occasional visualizations and creative applications for motivation
-
 ## Progress
 
 See [problems/leetcode/README.md](problems/leetcode/README.md) for detailed LeetCode progress tracking.
 
-## Learning Resources
-
-- **NeetCode Roadmap** - Primary interview prep structure
-- **Skiena's Algorithm Design Manual** - In conjunction and as reference
-
 ---
 
-_Last updated: 2025-12-28_
+\_Last updated: 2026-01-23
