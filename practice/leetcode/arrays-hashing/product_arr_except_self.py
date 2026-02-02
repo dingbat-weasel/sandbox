@@ -29,31 +29,60 @@ Constraints:
 
 
 Approach:
-[Explain the approach - what pattern/technique was used?]
+- at first, divide element value from product of whole
+- ran into divide by 0 error, if n == 0
+
+- second attempt, handle left and right of n separately and combine
+- create two arrays prefix and suffix that track the product of values before and after nums[i]
+- combine them for result
+- O(3 * n) time, 0(3 * n) memory as well
+
 
 Notes:
-- hash value at each index
-- return product of all values / product[i]
+- this one was difficult for me to visualize the code and will revisit
+- for divide by 0 errors, handle 0's firsts
+- prefix/suffix solution can be optimized for memory, maybe return and try that later
 
 """
 
 def product_arr_except_self(nums: list[int]) -> list[int]:
     """
-    Time Complexity: O(?)
-    Space Complexity: O(?)
+    Time Complexity: 
+    Space Complexity: 
     """
     product = 1
     out = []
     for n in nums:
         product *= n
     for i, n in enumerate(nums):
+        # if prod / n, n==0
         val = (product / n)
         out.append(val)
 
     return out
-# wip, div by 0
 
 
+def product_arr_except_self2(nums: list[int]) -> list[int]:
+    """
+    Time Complexity: O(3n)
+    Space Complexity: O(3n)
+    """
+    n = len(nums)
+    pref = [0] * n
+    suff = [0] * n
+    res = [0] * n
+
+    pref[0] = suff[n - 1] = 1
+    for i in range(1, n):
+        pref[i] = nums[i - 1] * pref[i - 1]
+
+    for i in range(n - 2, -1, -1):
+        suff[i] = nums[i + 1] * suff[i + 1]
+    
+    for i in range(n):
+        res[i] = pref[i] * suff[i]
+    
+    return res
 
 # Test cases
 if __name__ == "__main__":
@@ -65,6 +94,6 @@ if __name__ == "__main__":
     ]
 
     for i, (input_data, expected) in enumerate(test_cases):
-        result = product_arr_except_self(input_data)
+        result = product_arr_except_self2(input_data)
         status = "✓" if result == expected else "✗"
         print(f"Test {i+1}: {status} | Input: {input_data} | Expected: {expected} | Got: {result}")
