@@ -4,7 +4,6 @@ Difficulty: Medium
 URL: https://leetcode.com/problems/valid-sudoku/description/
 
 Description:
-[Brief problem description]
 
 Approach:
 
@@ -70,23 +69,50 @@ Notes:
 - [Alternative approaches considered]
 """
 
-def solution_name(param):
+
+def valid_sudoku(board):
     """
     Time Complexity: O(?)
     Space Complexity: O(?)
     """
-    # solution here
-    pass
+    row_check = {}
+    col_check = {}
+    box_check = {}
 
+    for row in board:
+        for cell in row:
+            print(cell)
+
+
+true_board = [["1","2",".",".","3",".",".",".","."],
+ ["4",".",".","5",".",".",".",".","."],
+ [".","9","1",".",".",".",".",".","3"],
+ ["5",".",".",".","6",".",".",".","4"],
+ [".",".",".","8",".","3",".",".","5"],
+ ["7",".",".",".","2",".",".",".","6"],
+ [".",".",".",".",".",".","2",".","."],
+ [".",".",".","4","1","9",".",".","8"],
+ [".",".",".",".","8",".",".","7","9"]]
+
+valid_sudoku(true_board)
 
 # Test cases
 if __name__ == "__main__":
     # Example test cases
     test_cases = [
-        # (input, expected_output),
+        ([["1","2",".",".","3",".",".",".","."],
+ ["4",".",".","5",".",".",".",".","."],
+ [".","9","1",".",".",".",".",".","3"],
+ ["5",".",".",".","6",".",".",".","4"],
+ [".",".",".","8",".","3",".",".","5"],
+ ["7",".",".",".","2",".",".",".","6"],
+ [".",".",".",".",".",".","2",".","."],
+ [".",".",".","4","1","9",".",".","8"],
+ [".",".",".",".","8",".",".","7","9"]],
+         True)
     ]
 
     for i, (input_data, expected) in enumerate(test_cases):
-        result = solution_name(input_data)
+        result = valid_sudoku(input_data)
         status = "✓" if result == expected else "✗"
         print(f"Test {i+1}: {status} | Input: {input_data} | Expected: {expected} | Got: {result}")
