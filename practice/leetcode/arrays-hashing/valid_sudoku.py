@@ -97,23 +97,75 @@ def valid_sudoku(board):
     Space Complexity: O(?)
     """
     board_map = {}
-    row_check = {}
-    col_check = {}
-    box_check = {}
+    row_map = {}
+    col_map = {}
+    box_map = {}
+    for i in range(9):
+        box_map[i] = []
+
 
     # for each row, add each cell to a seen map coord:digit
+    #   0,0 in top left 0-8, 0-8
     # row check: check all digits with same y coord pass tests, i.e. 1-9 unique
     # col check: check all digits with same x coord pass tests
-    # box check: x1-3, y1-3 test; x4-6, y1-3 test; x7-9, y1-3 test; etc.
+    # box check: x0-2, y0-2 test; x3-5, y0-2 test; x6-8, y0-2 test; etc.
 
+    # map board
     for y, row in enumerate(board):
+
         for x, value in enumerate(row):
             board_map[(x, y)] = value
+            # create row map
+            if y in row_map:
+                row_map[y].append(value)
+            else:
+                row_map[y] = [value]
 
-    print(board_map)
+            if x in col_map:
+                col_map[x].append(value)
+            else:
+                col_map[x] = [value]
 
 
-valid_sudoku(true_board)
+            if 0 <= x <= 2 and 0 <= y <= 2:
+                print("box 0")
+                box_map[0].append(value)
+            if 3 <= x <= 5 and 0 <= y <= 2:
+                box_map[1].append(value)
+            if 6 <= x <= 8 and 0 <= y <= 2:
+                box_map[2].append(value)
+            if 0 <= x <= 8 and 3 <= y <= 5:
+                box_map[3].append(value)
+            if 3 <= x <= 5 and 3 <= y <= 5:
+                box_map[4].append(value)
+            if 6 <= x <= 8 and 3 <= y <= 5:
+                box_map[5].append(value)
+            if 0 <= x <= 2 and 6 <= y <= 8:
+                box_map[6].append(value)
+            if 3 <= x <= 5 and 6 <= y <= 8:
+                box_map[7].append(value)
+            if 6 <= x <= 8 and 6 <= y <= 8:
+                box_map[8].append(value)
+    row_bool = False
+    col_bool = False
+    box_bool = False
+
+    for row in row_map:
+        values = row_map[row]
+        row_check = {}
+        row_check[row] = [0] * 9
+        for value in values:
+            if value == '.':
+                continue
+            if int(value) < 1 or int(value) > 9:
+                row_bool = False
+            else:
+                print(values)
+        if row_check[row] > 1:
+            row_bool = False
+        print(row_check)
+    print(row_bool, col_bool, box_bool)
+    valid_sudoku(true_board)
 
 
 # Test cases
