@@ -36,6 +36,7 @@ Notes:
 - 5: count up with str1 and then decrement using str2 to find differences with a single hashmap
 """
 
+
 def valid_anagram1(s: str, t: str):
     """
     Time Complexity: O(n)
@@ -43,7 +44,7 @@ def valid_anagram1(s: str, t: str):
     """
     if len(s) != len(t):
         return False
-    
+
     s_hash: dict[str, int] = dict()
     t_hash: dict[str, int] = dict()
 
@@ -64,9 +65,10 @@ def valid_anagram1(s: str, t: str):
     if s_hash == t_hash:
         print(s_hash, t_hash)
         return True
-    
+
     print(s_hash, t_hash)
     return False
+
 
 def valid_anagram2(s: str, t: str):
     """
@@ -75,7 +77,7 @@ def valid_anagram2(s: str, t: str):
     """
     if len(s) != len(t):
         return False
-    
+
     s_hash: dict[str, int] = dict()
     t_hash: dict[str, int] = dict()
 
@@ -88,16 +90,20 @@ def valid_anagram2(s: str, t: str):
 
     if s_hash == t_hash:
         return True
-    
+
     return False
 
+
 from collections import Counter
+
+
 def valid_anagram3(s: str, t: str):
     """
     Time Complexity: O(n)
     Space Complexity: O(n)
     """
     return Counter(s) == Counter(t)
+
 
 # other approaches
 def valid_anagram4(s: str, t: str):
@@ -107,49 +113,50 @@ def valid_anagram4(s: str, t: str):
     """
     return sorted(s) == sorted(t)
 
+
 def valid_anagram5(s: str, t: str) -> bool:
+    # check for unequal length
     if len(s) != len(t):
         return False
 
+    # initialize hash map
     counts = {}
 
-    # Increment for s
+    # increment for s
     for char in s:
         counts[char] = counts.get(char, 0) + 1
 
-    # Decrement for t
+    # decrement for t
     for char in t:
         counts[char] = counts.get(char, 0) - 1
-        if counts[char] < 0:  # Found char in t not in s
+        if counts[char] < 0:
             return False
-
     return all(count == 0 for count in counts.values())
+
 
 # Test cases
 if __name__ == "__main__":
     # Example test cases
     test_cases = [
-      # Basic valid anagrams
-      (("anagram", "nagaram"), True),
-      (("listen", "silent"), True),
-      (("abc", "bca"), True),
-
-      (("rat", "car"), False),
-      (("hello", "world"), False),
-
-      (("aaa", "aa"), False),
-      (("abc", "abcc"), False),
-
-      (("", ""), True),
-      (("a", "a"), True),
-      (("a", "b"), False),
-      (("abc", "abcd"), False),
-
-      (("aacc", "ccac"), False),
-      (("ab", "a"), False),
+        # Basic valid anagrams
+        (("anagram", "nagaram"), True),
+        (("listen", "silent"), True),
+        (("abc", "bca"), True),
+        (("rat", "car"), False),
+        (("hello", "world"), False),
+        (("aaa", "aa"), False),
+        (("abc", "abcc"), False),
+        (("", ""), True),
+        (("a", "a"), True),
+        (("a", "b"), False),
+        (("abc", "abcd"), False),
+        (("aacc", "ccac"), False),
+        (("ab", "a"), False),
     ]
 
     for i, (input_data, expected) in enumerate(test_cases):
         result = valid_anagram5(input_data[0], input_data[1])
         status = "✓" if result == expected else "✗"
-        print(f"Test {i+1}: {status} | Input: {input_data} | Expected: {expected} | Got: {result}")
+        print(
+            f"Test {i+1}: {status} | Input: {input_data} | Expected: {expected} | Got: {result}"
+        )
