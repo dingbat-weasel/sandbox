@@ -14,4 +14,4 @@ def sideways(val):
 
 def count(val):
     for row in range(1, val + 1):
-        print(4 - (abs(4 - row)))
+        print(val - (abs(val - row)))
