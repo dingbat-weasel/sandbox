@@ -45,10 +45,6 @@ class LinkedList:
         self.length += 1
         return True
 
-    # remove last node and return it
-    # tail to new last node
-    # edge empty
-    # edge one
     def pop(self):
         if self.head is None:
             raise IndexError("Invalid index. Length of list is 0.")
@@ -82,6 +78,34 @@ class LinkedList:
         self.length += 1
         return True
 
+    def pop_first(self):
+        if self.head is None:
+            raise IndexError("Invalid index. Length of list is 0.")
+
+        temp = self.head
+        self.head = self.head.next
+        temp.next = None
+        self.length -= 1
+        # len 1 -> 0
+        if self.length == 0:
+            self.tail = None
+        return temp
+
+    def get(self, index):
+        if index < 0 or index >= self.length:
+            raise IndexError(f"Invalid index. Length of list is {self.length}.")
+
+        temp = self.head
+        for _ in range(index):
+            if temp is None:
+                raise IndexError(f"Invalid index. Length of list is {self.length}.")
+            temp = temp.next
+
+        return temp
+
+    def set_value(self, index, value):
+        pass
+
 
 ll = LinkedList(4)
 ll.append(6)
@@ -89,6 +113,7 @@ ll.append(8)
 ll.append(2)
 ll.print_list()
 print("--")
-ll.prepend(5)
-
+popped = ll.get(3)
+print(popped.value)
+print("--")
 ll.print_list()
