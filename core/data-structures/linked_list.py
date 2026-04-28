@@ -153,14 +153,30 @@ class LinkedList:
         self.length -= 1
         return temp
 
+    def reverse(self):
+        temp = self.head
+        self.head = self.tail
+        self.tail = temp
+
+        after = temp.next
+        before = None
+        for _ in range(self.length):
+            after = temp.next
+            temp.next = before
+            before = temp
+            temp = after
+
 
 ll = LinkedList(4)
 ll.append(6)
 ll.append(8)
 ll.append(2)
+ll.append(7)
+ll.append(34)
+ll.append(89)
+
 ll.print_list()
 print("--")
-gone = ll.remove(2)
-print(gone.value)
+ll.reverse()
 print("--")
 ll.print_list()
