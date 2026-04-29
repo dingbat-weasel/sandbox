@@ -11,7 +11,7 @@
 # Lookup by value: O(n)
 
 # Lists better for pop and lookup by index
-# LL better for prepend and pop first
+# self better for prepend and pop first
 
 
 class Node:
@@ -154,29 +154,104 @@ class LinkedList:
         return temp
 
     def reverse(self):
+        if self.head == None:
+            return None
         temp = self.head
         self.head = self.tail
         self.tail = temp
 
         after = temp.next
         before = None
+
         for _ in range(self.length):
-            after = temp.next
-            temp.next = before
+            if temp and temp.next:
+                after = temp.next
+                temp.next = before
             before = temp
             temp = after
 
+    # from here are some leetcode-esque methods as practice
+    def find_middle_node(self):
+        if self.head == None:
+            return None
 
-ll = LinkedList(4)
-ll.append(6)
-ll.append(8)
-ll.append(2)
-ll.append(7)
-ll.append(34)
-ll.append(89)
+        slow = self.head
+        fast = self.head
 
-ll.print_list()
+        # AND uses short circuiting to eval
+        # fast.next not None AND fast not None produces error, no prop .next on Nonetype
+        # eval fast first, determines it None and doesn't check second condition, prevents error
+        while fast is not None and fast.next is not None:
+            if slow:
+                slow = slow.next
+            fast = fast.next.next
+
+        if slow == None:
+            return None
+        return slow.value
+
+    def has_loop(self):
+        if self.head == None:
+            return None
+
+        slow = self.head
+        fast = self.head
+        while fast and fast.next:
+            if slow:
+                slow = slow.next
+            fast = fast.next.next
+
+            if slow == fast:
+                return True
+
+        return False
+
+    def remove_duplicates(self):
+        if self.head == None:
+            return None
+        seen = set()
+
+        previous = self.head
+        current = previous.next
+        seen.add(previous.value)
+        while current:
+            if current.value in seen:
+                previous.next = current.next
+                self.length -= 1
+            else:
+                seen.add(current.value)
+                previous = current
+            current = current.next
+
+
+def kth_from_end(ll, k):
+    if ll.head == None:
+        return None
+
+    slow = ll.head
+    fast = ll.head
+    for _ in range(k - 1):
+        if fast == None:
+            return None
+        fast = fast.next
+
+    while fast and fast.next:
+        slow = slow.next
+        fast = fast.next
+
+    return slow
+
+
+LL = LinkedList(4)
+LL.append(6)
+LL.append(8)
+LL.append(6)
+LL.append(6)
+LL.append(3)
+LL.append(8)
+
+LL.print_list()
 print("--")
-ll.reverse()
+seen = LL.remove_duplicates()
+LL.print_list()
 print("--")
-ll.print_list()
