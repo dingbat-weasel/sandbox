@@ -1,0 +1,38 @@
+;; The first three lines of this file were inserted by DrRacket. They record metadata
+;; about the language level of this file in a form that our tools can easily process.
+#reader(lib "htdp-beginner-reader.ss" "lang")((modname 1_fixed_sized_data) (read-case-sensitive #t) (teachpacks ((lib "image.rkt" "teachpack" "2htdp"))) (htdp-settings #(#t constructor repeating-decimal #f #t none #f ((lib "image.rkt" "teachpack" "2htdp")) #f)))
+
+; arithmetic
+(define x 12)
+(define y 5)
+
+(define (distance x y)
+  (sqrt (+ (expt x 2) (expt y 2))))
+
+(distance x y)
+
+(define prefix "hello")
+(define suffix "world")
+
+(define hello (string-append prefix "_" suffix))
+(substring hello 1 3)
+(substring hello 0)
+(string-ith hello 4)
+(define str "helloworld")
+(define i 5)
+(string-append (substring str 0 i) "_" (substring str i))
+(define (str-remove str i)
+     (string-append (substring str 0 i) (substring str (+ i 1))))
+(str-remove str 1)
+
+(star 12 "solid" "tomato")
+(add-solid-curve (rectangle 100 100 "solid" "black")
+                 -20 -20 0 1
+                 120 120 0 1
+                 "red")
+(define o-a (overlay/align x y
+           (regular-polygon 20 5 "solid" (make-color  50  50 255))
+           (regular-polygon 26 5 "solid" (make-color 100 100 255))
+           (regular-polygon 32 5 "solid" (make-color 150 150 255))
+           (regular-polygon 38 5 "solid" (make-color 200 200 255))
+           (regular-polygon 44 5 "solid" (make-color 250 250 255))))
