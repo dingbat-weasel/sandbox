@@ -3,10 +3,10 @@ function setup() {
   background('lightblue');
 }
 
-function mx(x) {
+function fx(x) {
   return x;
 }
-function my(y) {
+function fy(y) {
   return height - y;
 }
 
