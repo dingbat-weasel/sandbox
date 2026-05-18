@@ -223,6 +223,45 @@ class LinkedList:
                 previous = current
             current = current.next
 
+    def binary_to_decimal(self):
+        if self.head == None:
+            return None
+
+        cv = 0
+        pv = 0
+
+        curr = self.head
+        while curr is not None:
+            cv = curr.value
+            pv = 2 * pv + cv
+            curr = curr.next
+
+        return pv
+
+    def partition_list(self, val):
+        if self.head is None:
+            return None
+
+        dummy1 = Node(0)
+        dummy2 = Node(0)
+        prev1 = dummy1
+        prev2 = dummy2
+        curr = self.head
+
+        while curr is not None:
+            if curr.value < val:
+                prev1.next = curr
+                prev1 = curr
+            else:
+                prev2.next = curr
+                prev2 = curr
+
+            curr = curr.next
+
+        prev1.next = dummy2.next
+        prev2.next = None
+        self.head = dummy1.next
+
 
 def kth_from_end(ll, k):
     if ll.head == None:
@@ -242,16 +281,14 @@ def kth_from_end(ll, k):
     return slow
 
 
-LL = LinkedList(4)
-LL.append(6)
-LL.append(8)
-LL.append(6)
-LL.append(6)
+LL = LinkedList(2)
+LL.append(7)
 LL.append(3)
-LL.append(8)
+LL.append(10)
+
 
 LL.print_list()
 print("--")
-seen = LL.remove_duplicates()
+dec = LL.partition_list(5)
 LL.print_list()
 print("--")
