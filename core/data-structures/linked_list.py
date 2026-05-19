@@ -170,7 +170,8 @@ class LinkedList:
             before = temp
             temp = after
 
-    # from here are some leetcode-esque methods as practice
+    # from here are some leetcode-esque methods as practice #######################
+
     def find_middle_node(self):
         if self.head == None:
             return None
@@ -262,6 +263,47 @@ class LinkedList:
         prev2.next = None
         self.head = dummy1.next
 
+    def reverse_between_inclusive(self, start, end):
+        if self.head is None:
+            return None
+
+        if start < self.length < end:
+            return None
+        dummy_head = Node(0)
+        dummy_head.next = self.head
+
+        s = dummy_head
+        e = self.head
+
+        h = None
+
+        for _ in range(start):
+            if s and s.next:
+                s = s.next
+        for _ in range(end):
+            h = e
+            if e and e.next:
+                e = e.next
+        t = s.next
+
+        before = s
+        temp = t
+        if temp and temp.next:
+            after = temp.next
+
+        # reverse pointers
+        for _ in range(end - start + 1):
+            if temp and temp.next:
+                after = temp.next
+                temp.next = before
+            before = temp
+            temp = after
+
+        # align reversed portion with full list
+        if t and t.next:
+            t.next = e
+        s.next = h
+
 
 def kth_from_end(ll, k):
     if ll.head == None:
@@ -281,14 +323,18 @@ def kth_from_end(ll, k):
     return slow
 
 
-LL = LinkedList(2)
-LL.append(7)
-LL.append(3)
-LL.append(10)
-
+LL = LinkedList(1)
+LL.append(2)
+LL.append(3)  #
+LL.append(4)
+LL.append(5)
+LL.append(6)
+LL.append(7)  #
+LL.append(8)
+LL.append(9)
 
 LL.print_list()
 print("--")
-dec = LL.partition_list(5)
+LL.reverse_between_inclusive(0, 3)
 LL.print_list()
 print("--")
