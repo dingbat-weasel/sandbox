@@ -263,46 +263,78 @@ class LinkedList:
         prev2.next = None
         self.head = dummy1.next
 
-    def reverse_between_inclusive(self, start, end):
+    # def reverse_between_attempt1(self, start, end):
+    #     if self.head is None:
+    #         return None
+
+    #     if start < self.length < end:
+    #         return None
+    #     dummy_head = Node(0)
+    #     dummy_head.next = self.head
+
+    #     s = dummy_head
+    #     e = self.head
+
+    #     h = None
+
+    #     for _ in range(start):
+    #         if s and s.next:
+    #             s = s.next
+    #     for _ in range(end):
+    #         h = e
+    #         if e and e.next:
+    #             e = e.next
+    #     t = s.next
+
+    #     before = s
+    #     temp = t
+    #     if temp and temp.next:
+    #         after = temp.next
+
+    #     # reverse pointers
+    #     for _ in range(end - start + 1):
+    #         if temp and temp.next:
+    #             after = temp.next
+    #             temp.next = before
+    #         before = temp
+    #         temp = after
+
+    #     # align reversed portion with full list
+    #     if t and t.next:
+    #         t.next = e
+    #     s.next = h
+
+    def reverse_between_attempt2(self, start, end):
         if self.head is None:
             return None
 
-        if start < self.length < end:
+        if start > self.length or end > self.length:
             return None
+        if self.length <= 1:
+            return None
+
         dummy_head = Node(0)
         dummy_head.next = self.head
-
-        s = dummy_head
-        e = self.head
-
-        h = None
-
+        prev = dummy_head
         for _ in range(start):
-            if s and s.next:
-                s = s.next
-        for _ in range(end):
-            h = e
-            if e and e.next:
-                e = e.next
-        t = s.next
+            if not prev or not prev.next:
+                return
+            prev = prev.next
 
-        before = s
-        temp = t
-        if temp and temp.next:
-            after = temp.next
+        if prev is None:
+            return
+        curr = prev.next
 
-        # reverse pointers
-        for _ in range(end - start + 1):
-            if temp and temp.next:
-                after = temp.next
-                temp.next = before
-            before = temp
-            temp = after
+        for _ in range(end - start):
+            if curr is None or curr.next is None:
+                return
 
-        # align reversed portion with full list
-        if t and t.next:
-            t.next = e
-        s.next = h
+            tm = curr.next
+            curr.next = tm.next
+            tm.next = prev.next
+            prev.next = tm
+
+        self.head = dummy_head.next
 
 
 def kth_from_end(ll, k):
@@ -335,6 +367,6 @@ LL.append(9)
 
 LL.print_list()
 print("--")
-LL.reverse_between_inclusive(0, 3)
+LL.reverse_between_attempt2(2, 6)
 LL.print_list()
 print("--")
