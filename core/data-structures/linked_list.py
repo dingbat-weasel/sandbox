@@ -336,6 +336,25 @@ class LinkedList:
 
         self.head = dummy_head.next
 
+    def swap_nodes_in_pairs(self):
+        if self.head is None or self.length == 1:
+            return None
+
+        dummy = Node(0)
+        dummy.next = self.head
+        prev = dummy
+        one = prev.next
+
+        while one and one.next:
+            two = one.next
+            one.next = two.next
+            two.next = one
+            prev.next = two
+            prev = one
+            one = prev.next
+
+        self.head = dummy.next
+
 
 def kth_from_end(ll, k):
     if ll.head == None:
@@ -367,6 +386,6 @@ LL.append(9)
 
 LL.print_list()
 print("--")
-LL.reverse_between_attempt2(2, 6)
+LL.swap_nodes_in_pairs()
 LL.print_list()
 print("--")
