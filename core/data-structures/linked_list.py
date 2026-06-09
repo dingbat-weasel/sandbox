@@ -91,28 +91,30 @@ class LinkedList:
             self.tail = None
         return temp
 
-    def get(self, index):
+    def get(self, index: int) -> Node:
         if index < 0 or index >= self.length:
-            raise IndexError(f"Invalid index. Length of list is {self.length}.")
+            raise IndexError(f"Index {index} out of bounds.")
 
-        temp = self.head
+        curr = self.head
         for _ in range(index):
-            if temp is None:
-                raise IndexError(f"Invalid index. Length of list is {self.length}.")
-            temp = temp.next
+            assert curr is not None
+            curr = curr.next
 
-        return temp
+        assert curr is not None
+        return curr
 
-    def set_value(self, index, value):
-        if index < 0 or index >= self.length:
-            raise IndexError(f"Invalid index. Length of list is {self.length}.")
+    def set_value(self, index: int, value: int) -> None:
+        node = self.get(index)
+        node.value = value
+        # if index < 0 or index >= self.length:
+        #     raise IndexError(f"Invalid index. Length of list is {self.length}.")
 
-        temp = self.get(index)
-        if temp is not None:
-            temp.value = value
-            return True
+        # temp = self.get(index)
+        # if temp is not None:
+        #     temp.value = value
+        #     return True
 
-        return False
+        # return False
 
     def insert(self, index, value):
         if index < 0 or index > self.length:
@@ -154,7 +156,7 @@ class LinkedList:
         return temp
 
     def reverse(self):
-        if self.head == None:
+        if self.head is None:
             return None
         temp = self.head
         self.head = self.tail
@@ -173,7 +175,7 @@ class LinkedList:
     # from here are some leetcode-esque methods as practice #######################
 
     def find_middle_node(self):
-        if self.head == None:
+        if self.head is None:
             return None
 
         slow = self.head
@@ -187,12 +189,12 @@ class LinkedList:
                 slow = slow.next
             fast = fast.next.next
 
-        if slow == None:
+        if slow is None:
             return None
         return slow.value
 
     def has_loop(self):
-        if self.head == None:
+        if self.head is None:
             return None
 
         slow = self.head
@@ -208,7 +210,7 @@ class LinkedList:
         return False
 
     def remove_duplicates(self):
-        if self.head == None:
+        if self.head is None:
             return None
         seen = set()
 
@@ -225,7 +227,7 @@ class LinkedList:
             current = current.next
 
     def binary_to_decimal(self):
-        if self.head == None:
+        if self.head is None:
             return None
 
         cv = 0
@@ -357,13 +359,13 @@ class LinkedList:
 
 
 def kth_from_end(ll, k):
-    if ll.head == None:
+    if ll.head is None:
         return None
 
     slow = ll.head
     fast = ll.head
     for _ in range(k - 1):
-        if fast == None:
+        if fast is None:
             return None
         fast = fast.next
 
