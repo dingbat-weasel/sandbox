@@ -72,7 +72,6 @@ class DoublyLinkedList:
             return None
 
         temp = self.head
-        self.length -= 1
 
         if self.head.next is None:
             self.head = None
@@ -81,7 +80,35 @@ class DoublyLinkedList:
             self.head = self.head.next
             self.head.prev = None
             temp.next = None
+        self.length -= 1
 
+        return temp
+
+    def get_singly(self, index):
+        # for reference, continues to work for DLL
+        # but DLL can optimize this, below
+        if index < 0 or index >= self.length:
+            return None
+        temp = self.head
+        for _ in range(index):
+            if temp and temp.next is not None:
+                temp = temp.next
+        return temp
+
+    def get(self, index):
+        # similar to singly: check if index out of range
+        if index < 0 or index >= self.length:
+            return None
+        temp = self.head
+        if index < self.length / 2:
+            for _ in range(index):
+                if temp and temp.next is not None:
+                    temp = temp.next
+        else:
+            temp = self.tail
+            for _ in range(self.length - 1, index, -1):
+                if temp and temp.prev is not None:
+                    temp = temp.prev
         return temp
 
 
@@ -90,7 +117,8 @@ dll.append(2)
 dll.append(3)
 dll.print_list()
 print("--")
-dll.pop_first()
+print(dll.get(1).value)
+print(dll.get(2).value)
 dll.print_list()
 
 

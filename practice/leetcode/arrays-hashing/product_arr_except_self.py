@@ -45,10 +45,11 @@ Notes:
 
 """
 
+
 def product_arr_except_self(nums: list[int]) -> list[int]:
     """
-    Time Complexity: 
-    Space Complexity: 
+    Time Complexity:
+    Space Complexity:
     """
     product = 1
     out = []
@@ -56,7 +57,7 @@ def product_arr_except_self(nums: list[int]) -> list[int]:
         product *= n
     for i, n in enumerate(nums):
         # if prod / n, n==0
-        val = (product / n)
+        val = product / n
         out.append(val)
 
     return out
@@ -78,22 +79,21 @@ def product_arr_except_self2(nums: list[int]) -> list[int]:
 
     for i in range(n - 2, -1, -1):
         suff[i] = nums[i + 1] * suff[i + 1]
-    
+
     for i in range(n):
         res[i] = pref[i] * suff[i]
-    
+
     return res
+
 
 # Test cases
 if __name__ == "__main__":
     # Example test cases
-    test_cases = [
-        ([1,2,4,6],[48,24,12,8]),
-        ([-1,0,1,2,3],[0,-6,0,0,0])
-
-    ]
+    test_cases = [([1, 2, 4, 6], [48, 24, 12, 8]), ([-1, 0, 1, 2, 3], [0, -6, 0, 0, 0])]
 
     for i, (input_data, expected) in enumerate(test_cases):
         result = product_arr_except_self2(input_data)
         status = "✓" if result == expected else "✗"
-        print(f"Test {i+1}: {status} | Input: {input_data} | Expected: {expected} | Got: {result}")
+        print(
+            f"Test {i + 1}: {status} | Input: {input_data} | Expected: {expected} | Got: {result}"
+        )
