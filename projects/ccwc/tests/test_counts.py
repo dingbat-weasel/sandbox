@@ -46,6 +46,16 @@ def test_count_words(data: bytes, expected: int) -> None:
         (b"abc\r\n", 5),
         ("é".encode(), 1),
         ("😀".encode(), 1),
+        (b"a\xff", 2),
+        (b"\xff\xff", 2),
+        (b"caf\xe9s", 5),
+        pytest.param(
+            b"\xe2\x82a",
+            3,
+            marks=pytest.mark.xfail(
+                reason="replace collapses a truncated sequence; wc counts each byte"
+            ),
+        ),
     ],
 )
 def test_count_chars(data: bytes, expected: int) -> None:
@@ -60,6 +70,9 @@ def test_count_chars(data: bytes, expected: int) -> None:
         (b"abc\r\n", 5),
         ("é".encode(), 2),
         ("😀".encode(), 4),
+        (b"a\xff", 2),
+        (b"\xff\xff", 2),
+        (b"caf\xe9s", 5),
     ],
 )
 def test_count_bytes(data: bytes, expected: int) -> None:

@@ -8,7 +8,10 @@ from ccwc.counts import count_bytes, count_chars, count_lines, count_words
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
         prog="ccwc",
-        description="Get byte, character, word, and line counts of a file or stdin.",
+        description="""
+        Print the line, word, char, or byte counts of a file or stdin to stdout.
+        Defaults to line, word, byte counts when no flags present.
+        """,
     )
     parser.add_argument(
         "-l",
