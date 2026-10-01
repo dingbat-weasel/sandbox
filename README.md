@@ -10,23 +10,23 @@ In some cases it can be helpful in surfacing the 'unkown unknowns' so-to-speak, 
 
 ## Repository Structure
 
-core:
+### core
 
-    - data structure and algorithms
+data structure and algorithms
 
-    Primarily an exploration into patterns and templated structures for use in leetcode problems and as 'tools in the toolbox'.
+Primarily an exploration into patterns and templated structures for use in leetcode problems and as 'tools in the toolbox'.
 
-projects:
+### projects
 
-    - These are smaller but self-contained projects built out of curiosity and to further my understanding; e.g. implementing wc or other unix command line tooling
+These are smaller but self-contained projects built out of curiosity and to further my understanding; e.g. implementing wc or other unix command line tooling
 
-    - Primary source of inspiration are [John Crickett's Coding Challenges](https://codingchallenges.fyi/challenges/intro)
+Primary source of inspiration are [John Crickett's Coding Challenges](https://codingchallenges.fyi/challenges/intro)
 
-    - Some of these have been expanded upon and moved to their own repositories when their scale demands it.
+Some of these have been expanded upon and moved to their own repositories when their scale demands it.
 
-problems:
+### problems
 
-    - These include kata-esque problems as solved on third-party sites such as leetcode, project euler, codewars, as well as textbook exercises and ctf problems
+These include kata-esque problems as solved on third-party sites such as leetcode, project euler, codewars, as well as textbook exercises and ctf problems
 
 ## Current Focus
 
