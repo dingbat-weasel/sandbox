@@ -1,4 +1,4 @@
-# Learning Sandbox
+#  Sandbox
 
 A structured repository for exploring computer science fundamentals, data structures, algorithms, and mathematical concepts through implementation and creative application. Created as a strategy for deeper, more playful learning during my studies and practice of different concepts.
 
