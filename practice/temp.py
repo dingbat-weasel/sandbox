@@ -1,14 +1,13 @@
-def pal(test: str) -> bool:
-    clean = "".join(char for char in test if char.isalnum()).lower()
-    s_list = list(clean)
+def col(mat: list[list[int]]) -> list:
+    out = []
+    if len(mat) == 0 or len(mat[0]) == 0:
+        return out
 
-    left = 0
-    right = len(s_list) - 1
+    for i in range(len(mat[0])):
+        for row in mat:
+            out.append(row[i])
 
-    while left < right:
-        s_list[left], s_list[right] = s_list[right], s_list[left]
+    return out
 
-        left += 1
-        right -= 1
 
-    return "".join(s_list) == clean
+print(col([[1, 2, 3], [4, 5, 6], [7, 8, 9]]))
