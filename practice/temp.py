@@ -1,13 +1,17 @@
-def col(mat: list[list[int]]) -> list:
-    out = []
-    if len(mat) == 0 or len(mat[0]) == 0:
-        return out
+def rev(s: str) -> str:
 
-    for i in range(len(mat[0])):
-        for row in mat:
-            out.append(row[i])
+    s_clean = " ".join(s.split())
+    words = [word for word in s_clean.split(" ")]
 
-    return out
+    left = 0
+    right = len(words) - 1
+    while left < right:
+        words[left], words[right] = words[right], words[left]
+
+        left += 1
+        right -= 1
+
+    return " ".join(words)
 
 
-print(col([[1, 2, 3], [4, 5, 6], [7, 8, 9]]))
+print(rev("This   $ is a string    "))
