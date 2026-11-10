@@ -6,7 +6,7 @@ AI has been expressly limited in its use during these projects and exercises. Fo
 In some cases it was consulted after the fact to learn of other methods or references I was unaware of.
 
 After some exploration into possible uses for AI during learning, I've found that the temptation to outsource my cognition is far too great to allow for any use while grappling with a new concept or problem.
-In some cases it can be helpful in surfacing the 'unkown unknowns' so-to-speak, after a solution has been achieved; but generally its use is counter-productive.
+In some cases it can be helpful in surfacing the 'unkown unknowns', after a solution has been achieved; but generally its use is counter-productive.
 
 ## Repository Structure
 
