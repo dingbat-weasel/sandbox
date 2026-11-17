@@ -42,7 +42,7 @@ class Solution:
         arr.sort()
 
         closest_total = float("inf")
-        for i in range(len(arr) - 1):
+        for i in range(len(arr)):
             current_total = self.closest_two_sum(arr, i, target)
 
             difference = abs(current_total - target)
