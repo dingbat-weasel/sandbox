@@ -9,41 +9,64 @@ class Solution:
         Explanation: [-1, -1, 2] and [-1, 0, 1] are the two eligible triplets that sum to 0.
     """
 
-    def two_sum(self, arr: list[int], i: int, target) -> list[list[int]]:
-        out = []
-        left = 0
+    def skip_duplicates_left(self, arr: list[int], left: int, right: int) -> int:
+
+        # skip duplicates from the left pointer
+        while left < right and arr[left] == arr[left + 1]:
+            left += 1
+
+        return left + 1
+
+    def skip_duplicates_right(self, arr: list[int], left: int, right: int) -> int:
+
+        # skip duplicates from the right pointer
+        while left < right and arr[right] == arr[right] - 1:
+            right -= 1
+
+        return right - 1
+
+    def duplicate_aware_two_sum(
+        self, arr: list[int], index: int, result: list[list[int]]
+    ) -> None:
+        left = index + 1
         right = len(arr) - 1
 
         while left < right:
-            if left == i:
-                left += 1
+            total = arr[index] + arr[left] + arr[right]
 
-            elif right == i:
-                right -= 1
+            # if sum is 0, add the triplet to result
+            if total == 0:
+                result.append([arr[index], arr[left], arr[right]])
 
-            elif arr[left] + arr[right] == target:
-                out.append([arr[left], arr[right]])
+                # move left to next unique element
+                left = self.skip_duplicates_left(arr, left, right)
 
-            elif arr[left] + arr[right] < target:
+                # move right to next unique element
+                right = self.skip_duplicates_right(arr, left, right)
+
+            elif total < 0:
                 left += 1
 
             else:
                 right -= 1
 
-        return out
-
     def three_sum(self, arr: list[int]) -> list[list[int]]:
+        result = []
+
+        # sort the arr in non-decreasing order
         arr.sort()
-        out = []
 
+        # traverse the arr using 1 pointer
         for i in range(len(arr)):
-            two_sum_target = 0 - arr[i]
-            solutions = self.two_sum(arr, i, two_sum_target)
+            # skip duplicates for the first element
+            if i > 0 and arr[i] == arr[i - 1]:
+                continue
 
-            out.extend(solutions)
-            print(solutions, out)
+            # use the two-pointer technique to find pairs
+            # with sum -arr[i]
+            self.duplicate_aware_two_sum(arr, i, result)
 
-        return out
+        return result
 
 
 solution = Solution()
